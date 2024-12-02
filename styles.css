@@ -1,0 +1,58 @@
+/* 1.remove time-based animations */
+/* 2.add scroll detection with javascript */
+/* 3.combine css and javascript */
+
+body{
+  margin: 0;
+  font-size: 5em;
+  background-image: url(img/bg.jpg);
+  height: 200vh
+}
+
+.banner {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: hidden;
+
+  --before-scale: 1.2;
+  --after-scale: 2;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('img/valentin-petrov-m-mal-01.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: scale(var(--before-scale));
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('img/after.png');
+  background-size: cover;
+  background-position: center;
+  transform: scale(var(--after-scale));
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.1 ease-out;
+}
+
+svg path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 0.7;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  transition: stroke-dashoffset 0.1s ease-out, fill 0.1s ease-out;
+}
